@@ -6,34 +6,96 @@
     box-sizing: border-box;
     font-family: 'Poppins',sans-serif;
 }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('img1.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: 80px;
     padding: 20px 100px;
-    background: transparent;
+    background: #9C27B0;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .3);
+    border-bottom: 2px solid rgba(255, 255, 255, .5);
+    opacity: 0.8;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 9%;
+    box-shadow: 0.5 1 rem rgba(0, 0, 0, .1);
     z-index: 99;
 }
 
-.logo{
+.header .logo{
+    position: relative;
     font-size: 32px;
     color: #fff;
     text-decoration: none;
     font-weight: 700;
-    pointer-events: none;
 }
 
-.navbar a {
+.header .navbar a {
+    position: relative;
+    display: inline-block;
     font-size: 18px;
     color: #fff;
     text-decoration: none;
     font-weight: 500;
-    margin-right: 40px;
+    margin-right: 2rem;
+}
+
+.toggle-btn {
+    position: relative;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+@media (max-width: 992px){
+    .header{
+        padding: 0 5%;
+    }
+}
+@media (max-width: 768px){
+    .toggle-btn{
+        display: block;
+    }
+    .toggle-btn.active::before{
+        content: '\f00d';
+    }
+    .header .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #9C27B0;
+        padding: 0 10%;
+        box-shadow: 0 1rem 1rem rgba(0, 0, 0, .3);
+        transform: scale(0);
+        transition: 0.8s;
+        transform-origin: top right;
+    }
+    .header .navbar.active{
+        transform: scale(1);
+    }
+    .header .navbar a{
+        display: block;
+        margin: 1.5rem 0;
+        left: 0;
+        transition: .5s;
+    }
+}
+.header .navbar a i{
+    margin-right: 6px;
 }
 .navbar .btnLogin-popup {
     position: relative;
@@ -49,18 +111,11 @@
     content: '';
     position: absolute;
     left: 0;
-    bottom: -4px;
+    bottom: 0;
     width: 100%;
     height: 2px;
     background: #fff;
     opacity: 0.85;
-}
-
-.section{
-    min-height: 100vh;
-    background: url('img1.png') no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
 .wrapper{
@@ -92,6 +147,7 @@
     right: 0;
     width: 45px;
     height: 45px;
+    margin: 20px;
     color: #fff;
     cursor:pointer;
     justify-content: center;
@@ -100,6 +156,7 @@
 .icon-close i{
     font-size: 32px;
 }
+
 .wrapper .logreg-box {
     width: 100%;
 }
